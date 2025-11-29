@@ -4,16 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:background="@color/greenLight"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/BtnPointA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="40dp"
+        android:textColor="@color/white"
+        android:text="POINT A"
+        app:backgroundTint="@color/greenDark"
         app:layout_constraintEnd_toEndOf="parent"
+        app:cornerRadius="0dp"
+        tools:layout_editor_absoluteY="409dp" />
+
+    <Button
+        android:id="@+id/BtnPointB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="POINT B"
+        app:cornerRadius="0dp"
+        app:backgroundTint="@color/greenDark"
+        app:layout_constraintEnd_toEndOf="@+id/BtnPointA"
+        app:layout_constraintStart_toStartOf="@+id/BtnPointA"
+        app:layout_constraintTop_toBottomOf="@+id/BtnPointA" />
+
+    <Button
+        android:id="@+id/BtnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="50dp"
+        android:text="RESET"
+        app:backgroundTint="@color/greenDark"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radButGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/BtnReset"
+        app:layout_constraintEnd_toStartOf="@+id/BtnReset"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/BtnReset">
+
+        <RadioButton
+            android:id="@+id/radBut3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="3"
+            android:textColor="@color/Yellow"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radBut5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="5"
+            android:textColor="@color/Yellow"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutScoreAndSets"
+        android:layout_width="280dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/lblScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Score"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="0"
+            android:textSize="45sp"
+            android:textColor="@color/Yellow"
+            android:background="@color/Brown"
+            android:padding="3dp"
+            app:layout_constraintEnd_toEndOf="@+id/lblScore"
+            app:layout_constraintStart_toStartOf="@+id/lblScore"
+            app:layout_constraintTop_toBottomOf="@+id/lblScore" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
