@@ -12,27 +12,28 @@
         android:id="@+id/BtnPointA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="19dp"
+        android:text="POINT A"
         android:textColor="@color/white"
         android:textSize="22sp"
-        android:text="POINT A"
         app:backgroundTint="@color/greenDark"
-        app:layout_constraintEnd_toEndOf="parent"
         app:cornerRadius="0dp"
-        tools:layout_editor_absoluteY="409dp" />
+        app:layout_constraintBottom_toTopOf="@+id/BtnPointB"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/BtnPointB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="22sp"
+        android:layout_marginBottom="104dp"
         android:text="POINT B"
-        app:cornerRadius="0dp"
+        android:textSize="22sp"
         app:backgroundTint="@color/greenDark"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/BtnReset"
         app:layout_constraintEnd_toEndOf="@+id/BtnPointA"
-        app:layout_constraintStart_toStartOf="@+id/BtnPointA"
-        app:layout_constraintTop_toBottomOf="@+id/BtnPointA" />
+        app:layout_constraintStart_toStartOf="@+id/BtnPointA" />
 
     <Button
         android:id="@+id/BtnReset"
@@ -40,8 +41,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="65dp"
         android:layout_marginBottom="50dp"
-        android:textSize="22sp"
         android:text="RESET"
+        android:textSize="22sp"
         app:backgroundTint="@color/greenDark"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -89,8 +90,9 @@
         android:layout_width="0dp"
         android:layout_height="220dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="65dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/layoutGamesAndPoints"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -99,7 +101,7 @@
             android:id="@+id/lblScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="35dp"
             android:layout_marginTop="20dp"
             android:text="Score"
             android:textColor="@color/black"
@@ -288,6 +290,132 @@
                 android:textSize="55sp"
                 android:visibility="gone" />
         </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutGamesAndPoints"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
+        app:layout_constraintBottom_toTopOf="@+id/BtnReset"
+        app:layout_constraintEnd_toStartOf="@+id/BtnPointA"
+        app:layout_constraintStart_toStartOf="@+id/layoutScoreAndSets">
+
+        <TextView
+            android:id="@+id/lblGames"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Games"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/gamesWonA"
+            app:layout_constraintStart_toStartOf="@+id/gamesWonA"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/gamesWonA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="12dp"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="0"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblGames" />
+
+        <TextView
+            android:id="@+id/gamesWonB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="0"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/gamesWonA"
+            app:layout_constraintStart_toStartOf="@+id/gamesWonA"
+            app:layout_constraintTop_toBottomOf="@+id/gamesWonA" />
+
+        <TextView
+            android:id="@+id/lblPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Points"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/pointsARight"
+            app:layout_constraintStart_toStartOf="@+id/pointsALeft"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/pointsALeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="0"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            app:layout_constraintBottom_toBottomOf="@+id/gamesWonA"
+            app:layout_constraintEnd_toStartOf="@+id/pointsARight"
+            app:layout_constraintTop_toTopOf="@+id/gamesWonA" />
+
+        <TextView
+            android:id="@+id/pointsARight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="0"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            app:layout_constraintBottom_toBottomOf="@+id/gamesWonB"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gamesWonB" />
+
+        <TextView
+            android:id="@+id/pointsBLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="0"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            app:layout_constraintBottom_toBottomOf="@+id/pointsARight"
+            app:layout_constraintEnd_toStartOf="@+id/pointsARight"
+            app:layout_constraintTop_toTopOf="@+id/gamesWonB" />
+
+        <TextView
+            android:id="@+id/pointsBRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="25dp"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="0"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            app:layout_constraintBottom_toBottomOf="@+id/gamesWonA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gamesWonA"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
