@@ -8,5 +8,8 @@ interface ITennisScoreView {
     fun changeNumOfSets()
     fun addPointA()
     fun addPointB()
+    fun reset()
+    fun disablePointButtons()
+    fun enablePointButtons()
     fun updateAll()
 }

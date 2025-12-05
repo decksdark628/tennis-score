@@ -1,6 +1,7 @@
 package es.agil.tennisscore
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,10 @@ class TennisScoreActivity : AppCompatActivity(), ITennisScoreView {
     private lateinit var pointsBLeft:TextView
     private lateinit var pointsBRight:TextView
 
+    private lateinit var btnPointA:Button
+    private lateinit var btnPointB:Button
+    private lateinit var btnReset:Button
+
     private lateinit var controller:TennisScoreController
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,8 +67,10 @@ class TennisScoreActivity : AppCompatActivity(), ITennisScoreView {
         pointsBLeft = findViewById(R.id.pointsBLeft)
         pointsARight = findViewById(R.id.pointsARight)
         pointsBRight = findViewById(R.id.pointsBRight)
+        btnPointA = findViewById(R.id.BtnPointA)
+        btnPointB = findViewById(R.id.BtnPointB)
+        btnReset = findViewById(R.id.BtnReset)
         controller = TennisScoreController(this)
-
     }
 
     override fun updateScore() {
@@ -87,11 +94,25 @@ class TennisScoreActivity : AppCompatActivity(), ITennisScoreView {
     }
 
     override fun addPointA() {
-        TODO("Not yet implemented")
+        controller.attemptToAddPointA()
     }
 
     override fun addPointB() {
         TODO("Not yet implemented")
+    }
+
+    override fun reset() {
+        controller.reset()
+    }
+
+    override fun disablePointButtons() {
+        btnPointA.isEnabled = false
+        btnPointB.isEnabled = false
+    }
+
+    override fun enablePointButtons() {
+        btnPointA.isEnabled = true
+        btnPointB.isEnabled = true
     }
 
     override fun updateAll() {
