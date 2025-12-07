@@ -3,75 +3,131 @@ package es.agil.tennisscore
 class TennisScoreController(private val view: TennisScoreActivity) {
     private val model:TennisScoreModel = TennisScoreModel()
 
-    fun reset(){
+    fun resetAll(){
         model.resetAll()
         view.enablePointButtons()
-        view.updateAll()
     }
 
-    fun attemptToAddPointA():Boolean{
+    private fun updatePoints(){
+        val leftA = model.getPointsA().p[0]
+        val rightA = model.getPointsA().p[1]
+        view.setPointA(leftA, rightA)
+
+        val leftB = model.getPointsB().p[0]
+        val rightB = model.getPointsB().p[1]
+        view.setPointB(leftB, rightB)
+    }
+
+    private fun updateGames(){
+        view.updateGames(model.getGamesA(), model.getGamesB())
+    }
+
+    private fun updateScores(){
+        view.setScore(model.getScoreA(), model.getScoreB())
+    }
+
+    private fun updateView(){
+        updatePoints()
+        updateGames()
+        updateScores()
+        //sets are update in the set writeSet method
+    }
+
+    fun addPointA(){
         val a = model.getPointsA()
-        var result = false
-        if (a == TennisScoreModel.Points.ADVANTAGE && attemptToIncreaseGamesA()){
-            result = true
-            model.resetPoints() //GAME
+        val b = model.getPointsB()
+        if(a == TennisScoreModel.Points.ADVANTAGE){
+            addGame(1)
         }
-        else if (a == TennisScoreModel.Points.FORTY) {
-            if (model.getPointsB() == TennisScoreModel.Points.FORTY) { // DEUCE: continues
-                model.addPointA() //ADVANTAGE
-                result = true
-            }
-            else if (model.getPointsB() == TennisScoreModel.Points.ADVANTAGE){
-                model.setDeuce() //Removes advantage of opponent
-            }
-            else { // GAME
-                result = attemptToIncreaseGamesA()
-                if(result){
-                    model.resetPoints()
+        else if (a == TennisScoreModel.Points.FORTY){
+                if (b == TennisScoreModel.Points.FORTY){
+                    model.addPointA()
                 }
+                else{
+                    addGame(1)
+                }
+        }
+        else{
+            if (a == TennisScoreModel.Points.THIRTY && b == TennisScoreModel.Points.ADVANTAGE)
+                model.setDeuce()
+            else{
+                model.addPointA()
             }
         }
-        else{ // continues
-            model.addPointA()
-            result = true
-        }
-
-        return result
+        updateView()
+        checkWinCondition()
     }
 
-    private fun attemptToIncreaseGamesA():Boolean{
-        val a = model.getGamesA()
-
-        var result = false
-        if (a >= 6 && a - model.getGamesB() >= 2){
-            result = attemptToWriteCurrentSet()
-            if (result){
+    private fun addGame(player:Int){
+        val gamesA = model.getGamesA()
+        val gamesB = model.getGamesB()
+        //SET
+        if (player == 1) {
+            if (gamesA>= 6 && gamesA - gamesB >= 2){
+                writeSet()
+            }
+            else{
+                model.increaseGamesA()
                 model.increaseScoreA()
-                model.resetGames()
-                result = true
             }
         }
         else{
-            model.increaseGamesA()
-            result = true
+            if(gamesB>= 6 && gamesB - gamesA >= 2) {
+            }
+            else{
+                model.increaseGamesB()
+                model.increaseScoreB()
+            }
         }
-        return result
     }
 
-    private fun attemptToWriteCurrentSet():Boolean{
+    private fun writeSet(){
         val indexOfSetToModify = model.getActiveSet() -1
-        if (indexOfSetToModify in 0..<model.getNumSets()) {
+        if (indexOfSetToModify in 0..<model.getNumSets()){
             model.setSets(indexOfSetToModify)
+            view.setSets(model.getGamesA(), model.getGamesB(), indexOfSetToModify)
             model.increaseActiveSet()
-            return checkWinCondition()
+            model.resetGames()
         }
-        return false
     }
 
-    private fun checkWinCondition():Boolean{
+    private fun checkWinCondition(){
         val setsNeededToWin = (model.getNumSets()+1)/2 // Añado 1 para redondear siempre hacia arriba. Al dividir dos Ints, el resultado será solo la parte Int de la division.
         if (model.getScoreA() >= setsNeededToWin || model.getScoreB() >= setsNeededToWin)
             view.disablePointButtons()
-        return false
+    }
+
+    fun addPointB() {
+        val a = model.getPointsA()
+        val b = model.getPointsB()
+        if (b == TennisScoreModel.Points.ADVANTAGE) {
+            addGame(2)
+        } else if (b == TennisScoreModel.Points.FORTY) {
+            if (a == TennisScoreModel.Points.FORTY) {
+                model.addPointB()
+            } else {
+                addGame(2)
+            }
+        } else {
+            if (b == TennisScoreModel.Points.THIRTY && a == TennisScoreModel.Points.ADVANTAGE)
+                model.setDeuce()
+            else {
+                model.addPointB()
+            }
+        }
+        updateView()
+        checkWinCondition()
+    }
+
+    fun radBut3Selected(){
+        view.hideExtraSets()
+        model.resetAll()
+        updateView()
+    }
+
+    fun radBut5Selected(){
+        view.showExtraSets()
+        model.resetAll()
+        updateView()
     }
 }

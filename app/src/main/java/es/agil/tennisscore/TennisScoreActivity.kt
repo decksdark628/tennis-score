@@ -1,6 +1,7 @@
 package es.agil.tennisscore
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.RadioGroup
 import android.widget.TextView
@@ -41,13 +42,8 @@ class TennisScoreActivity : AppCompatActivity(), ITennisScoreView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*enableEdgeToEdge()*/
         setContentView(R.layout.activity_main)
-        /*ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }*/
+
         radGroup = findViewById(R.id.radButGroup)
         scoreA = findViewById(R.id.scoreA)
         scoreB = findViewById(R.id.scoreB)
@@ -71,38 +67,76 @@ class TennisScoreActivity : AppCompatActivity(), ITennisScoreView {
         btnPointB = findViewById(R.id.BtnPointB)
         btnReset = findViewById(R.id.BtnReset)
         controller = TennisScoreController(this)
+
+        radGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId){
+                R.id.radBut3 -> {
+                    controller.radBut3Selected()
+                }
+                R.id.radBut5 ->{
+                    controller.radBut5Selected()
+                }
+            }
+        }
     }
 
-    override fun updateScore() {
-        TODO("Not yet implemented")
+    override fun setScore(nA: Int, nB: Int) {
+        scoreA.text = nA.toString()
+        scoreB.text = nB.toString()
     }
 
-    override fun updateSets() {
-        TODO("Not yet implemented")
+    override fun setSets(nA: Int, nB: Int, ind:Int) {
+        when (ind) {
+            1 -> {
+                setsA1.text = nA.toString()
+                setsB1.text = nB.toString()
+            }
+            2 -> {
+                setsA2.text = nA.toString()
+                setsB2.text = nB.toString()
+            }
+            3 -> {
+                setsA3.text = nA.toString()
+                setsB3.text = nB.toString()
+            }
+            4 -> {
+                setsA4.text = nA.toString()
+                setsB4.text = nB.toString()
+            }
+            5 -> {
+                setsA5.text = nA.toString()
+                setsB5.text = nB.toString()
+            }
+        }
     }
 
-    override fun updateGames() {
-        TODO("Not yet implemented")
+    override fun updateGames(nA: Int, nB: Int) {
+        gamesWonA.text = nA.toString()
+        gamesWonB.text = nB.toString()
     }
 
-    override fun updatePoints() {
-        TODO("Not yet implemented")
+    override fun setPointA(s1: String, s2: String) {
+        pointsALeft.text = s1
+        pointsARight.text = s2
     }
 
-    override fun changeNumOfSets() {
-        TODO("Not yet implemented")
+    override fun setPointB(s1: String, s2: String) {
+        pointsBLeft.text = s1
+        pointsBRight.text = s2
     }
 
-    override fun addPointA() {
-        controller.attemptToAddPointA()
+    override fun showExtraSets() {
+        setsA4.visibility = View.VISIBLE
+        setsA5.visibility = View.VISIBLE
+        setsB4.visibility = View.VISIBLE
+        setsB5.visibility = View.VISIBLE
     }
 
-    override fun addPointB() {
-        TODO("Not yet implemented")
-    }
-
-    override fun reset() {
-        controller.reset()
+    override fun hideExtraSets() {
+        setsA4.visibility = View.GONE
+        setsA5.visibility = View.GONE
+        setsB4.visibility = View.GONE
+        setsB5.visibility = View.GONE
     }
 
     override fun disablePointButtons() {
@@ -115,7 +149,13 @@ class TennisScoreActivity : AppCompatActivity(), ITennisScoreView {
         btnPointB.isEnabled = true
     }
 
-    override fun updateAll() {
-        TODO("Not yet implemented")
+    fun resetAll(view: View) {
+        controller.resetAll()
+    }
+    fun addPointB(view: View) {
+        controller.addPointB()
+    }
+    fun addPointA(view: View) {
+        controller.addPointA()
     }
 }

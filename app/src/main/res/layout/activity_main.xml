@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="19dp"
+        android:onClick="addPointA"
         android:text="POINT A"
         android:textColor="@color/white"
         android:textSize="22sp"
@@ -27,6 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="104dp"
+        android:onClick="addPointB"
         android:text="POINT B"
         android:textSize="22sp"
         app:backgroundTint="@color/greenDark"
@@ -41,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="65dp"
         android:layout_marginBottom="50dp"
+        android:onClick="resetAll"
         android:text="RESET"
         android:textSize="22sp"
         app:backgroundTint="@color/greenDark"
@@ -172,7 +175,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp" />
 
@@ -183,7 +186,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp" />
 
@@ -194,7 +197,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp" />
 
@@ -205,7 +208,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp"
                 android:visibility="gone" />
@@ -217,7 +220,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp"
                 android:visibility="gone" />
@@ -241,7 +244,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp" />
 
@@ -252,7 +255,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp" />
 
@@ -263,7 +266,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp" />
 
@@ -274,7 +277,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp"
                 android:visibility="gone" />
@@ -286,7 +289,7 @@
                 android:background="@color/Brown"
                 android:paddingHorizontal="6dp"
                 android:paddingVertical="2dp"
-                android:text="0"
+                android:text="_"
                 android:textColor="@color/Yellow"
                 android:textSize="55sp"
                 android:visibility="gone" />
