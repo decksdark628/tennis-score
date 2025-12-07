@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="65dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="65dp"
         android:onClick="resetAll"
         android:text="RESET"
         android:textSize="22sp"
@@ -300,7 +300,7 @@
         android:id="@+id/layoutGamesAndPoints"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="65dp"
         app:layout_constraintBottom_toTopOf="@+id/BtnReset"
         app:layout_constraintEnd_toStartOf="@+id/BtnPointA"
         app:layout_constraintStart_toStartOf="@+id/layoutScoreAndSets">
@@ -377,7 +377,7 @@
             app:layout_constraintTop_toTopOf="@+id/gamesWonA" />
 
         <TextView
-            android:id="@+id/pointsARight"
+            android:id="@+id/pointsBRight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="25dp"
@@ -401,12 +401,12 @@
             android:text="0"
             android:textColor="@color/Yellow"
             android:textSize="55sp"
-            app:layout_constraintBottom_toBottomOf="@+id/pointsARight"
+            app:layout_constraintBottom_toBottomOf="@+id/pointsBRight"
             app:layout_constraintEnd_toStartOf="@+id/pointsARight"
-            app:layout_constraintTop_toTopOf="@+id/gamesWonB" />
+            app:layout_constraintTop_toTopOf="@+id/pointsBRight" />
 
         <TextView
-            android:id="@+id/pointsBRight"
+            android:id="@+id/pointsARight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="25dp"

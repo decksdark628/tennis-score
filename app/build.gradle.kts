@@ -5,11 +5,11 @@ plugins {
 
 android {
     namespace = "es.agil.tennisscore"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "es.agil.tennisscore"
-        minSdk = 22
+        minSdk = 23
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"

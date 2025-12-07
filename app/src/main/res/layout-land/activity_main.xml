@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:background="@color/greenLight"
+    android:layout_height="match_parent"
+    tools:context=".TennisScoreActivity">
+
+    <Button
+        android:id="@+id/BtnPointA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginBottom="35dp"
+        android:onClick="addPointA"
+        android:text="POINT A"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:backgroundTint="@color/greenDark"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/BtnPointB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:onClick="addPointB"
+        android:text="POINT B"
+        android:textSize="22sp"
+        app:backgroundTint="@color/greenDark"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/BtnPointA"
+        app:layout_constraintStart_toEndOf="@+id/BtnPointA"
+        app:layout_constraintTop_toTopOf="@+id/BtnPointA" />
+
+    <Button
+        android:id="@+id/BtnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="55dp"
+        android:onClick="resetAll"
+        android:text="RESET"
+        android:textSize="22sp"
+        app:backgroundTint="@color/greenDark"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/BtnPointB"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/BtnPointB" />
+
+    <TextView
+        android:id="@+id/lblGames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="45dp"
+        android:text="Games"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/lblSets"
+        app:layout_constraintEnd_toStartOf="@+id/pointsALeft"
+        app:layout_constraintTop_toTopOf="@+id/lblSets" />
+
+    <TextView
+        android:id="@+id/gamesWonA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Brown"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:text="0"
+        android:textColor="@color/Yellow"
+        android:textSize="55sp"
+        app:layout_constraintBottom_toBottomOf="@+id/setsA"
+        app:layout_constraintEnd_toEndOf="@+id/lblGames"
+        app:layout_constraintStart_toStartOf="@+id/lblGames" />
+
+    <TextView
+        android:id="@+id/gamesWonB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Brown"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:text="0"
+        android:textColor="@color/Yellow"
+        android:textSize="55sp"
+        app:layout_constraintEnd_toEndOf="@+id/gamesWonA"
+        app:layout_constraintStart_toStartOf="@+id/gamesWonA"
+        app:layout_constraintTop_toTopOf="@+id/setsB" />
+
+    <TextView
+        android:id="@+id/lblPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/pointsARight"
+        app:layout_constraintStart_toStartOf="@+id/pointsALeft"
+        app:layout_constraintTop_toTopOf="@+id/lblScore" />
+
+    <TextView
+        android:id="@+id/pointsALeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Brown"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:text="0"
+        android:textColor="@color/Yellow"
+        android:textSize="55sp"
+        app:layout_constraintEnd_toStartOf="@+id/pointsARight"
+        app:layout_constraintTop_toTopOf="@+id/pointsARight" />
+
+    <TextView
+        android:id="@+id/pointsBRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Brown"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:text="0"
+        android:textColor="@color/Yellow"
+        android:textSize="55sp"
+        app:layout_constraintEnd_toEndOf="@+id/pointsARight"
+        app:layout_constraintTop_toTopOf="@+id/gamesWonB" />
+
+    <TextView
+        android:id="@+id/pointsBLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Brown"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:text="0"
+        android:textColor="@color/Yellow"
+        android:textSize="55sp"
+        app:layout_constraintStart_toStartOf="@+id/pointsALeft"
+        app:layout_constraintTop_toTopOf="@+id/pointsBRight" />
+
+    <TextView
+        android:id="@+id/pointsARight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:background="@color/Brown"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:text="0"
+        android:textColor="@color/Yellow"
+        android:textSize="55sp"
+        app:layout_constraintBottom_toBottomOf="@+id/gamesWonA"
+        app:layout_constraintEnd_toStartOf="@+id/radButGroup" />
+
+    <TextView
+        android:id="@+id/lblScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="70dp"
+        android:text="Score"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/scoreA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@color/Brown"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:text="0"
+        android:textColor="@color/Yellow"
+        android:textSize="55sp"
+        app:layout_constraintEnd_toEndOf="@+id/lblScore"
+        app:layout_constraintStart_toStartOf="@+id/lblScore"
+        app:layout_constraintTop_toBottomOf="@+id/lblScore" />
+
+    <TextView
+        android:id="@+id/scoreB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/Brown"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp"
+        android:text="0"
+        android:textColor="@color/Yellow"
+        android:textSize="55sp"
+        app:layout_constraintEnd_toEndOf="@+id/scoreA"
+        app:layout_constraintStart_toStartOf="@+id/scoreA"
+        app:layout_constraintTop_toBottomOf="@+id/scoreA" />
+
+    <TextView
+        android:id="@+id/lblSets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sets"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/lblScore"
+        app:layout_constraintEnd_toStartOf="@+id/lblGames"
+        app:layout_constraintStart_toEndOf="@+id/lblScore"
+        app:layout_constraintTop_toTopOf="@+id/lblScore" />
+
+    <LinearLayout
+        android:id="@+id/setsA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/scoreA"
+        app:layout_constraintEnd_toEndOf="@+id/lblSets"
+        app:layout_constraintStart_toStartOf="@+id/lblSets"
+        app:layout_constraintTop_toTopOf="@+id/scoreA">
+
+        <TextView
+            android:id="@+id/setsA1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp" />
+
+        <TextView
+            android:id="@+id/setsA2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp" />
+
+        <TextView
+            android:id="@+id/setsA3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp" />
+
+        <TextView
+            android:id="@+id/setsA4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/setsA5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/setsB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        app:layout_constraintBottom_toBottomOf="@+id/scoreB"
+        app:layout_constraintEnd_toEndOf="@+id/setsA"
+        app:layout_constraintStart_toStartOf="@+id/setsA"
+        app:layout_constraintTop_toTopOf="@+id/scoreB">
+
+        <TextView
+            android:id="@+id/setsB1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp" />
+
+        <TextView
+            android:id="@+id/setsB2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp" />
+
+        <TextView
+            android:id="@+id/setsB3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp" />
+
+        <TextView
+            android:id="@+id/setsB4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/setsB5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/Brown"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="2dp"
+            android:text="_"
+            android:textColor="@color/Yellow"
+            android:textSize="55sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radButGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/scoreB"
+        app:layout_constraintEnd_toEndOf="@+id/BtnReset"
+        app:layout_constraintTop_toTopOf="@+id/lblScore">
+
+        <RadioButton
+            android:id="@+id/radBut3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="3"
+            android:textColor="@color/Yellow"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radBut5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:shadowColor="@color/black"
+            android:shadowDx="2"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="5"
+            android:textColor="@color/Yellow"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

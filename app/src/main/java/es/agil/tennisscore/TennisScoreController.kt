@@ -1,11 +1,20 @@
 package es.agil.tennisscore
 
+import android.util.Log
+
 class TennisScoreController(private val view: TennisScoreActivity) {
     private val model:TennisScoreModel = TennisScoreModel()
 
     fun resetAll(){
         model.resetAll()
+        resetSets()
         view.enablePointButtons()
+        model.resetActiveSet()
+        updateView()
+    }
+
+    private fun resetSets(){
+        view.resetSets()
     }
 
     private fun updatePoints(){
@@ -20,6 +29,10 @@ class TennisScoreController(private val view: TennisScoreActivity) {
 
     private fun updateGames(){
         view.updateGames(model.getGamesA(), model.getGamesB())
+    }
+
+    private fun updateSets(){
+
     }
 
     private fun updateScores(){
@@ -43,51 +56,52 @@ class TennisScoreController(private val view: TennisScoreActivity) {
                 if (b == TennisScoreModel.Points.FORTY){
                     model.addPointA()
                 }
+                else if(b == TennisScoreModel.Points.ADVANTAGE){
+                    model.setDeuce()
+                }
                 else{
                     addGame(1)
                 }
         }
         else{
-            if (a == TennisScoreModel.Points.THIRTY && b == TennisScoreModel.Points.ADVANTAGE)
-                model.setDeuce()
-            else{
-                model.addPointA()
-            }
+            model.addPointA()
         }
         updateView()
         checkWinCondition()
     }
 
-    private fun addGame(player:Int){
+    private fun checkIfSetWon(){
         val gamesA = model.getGamesA()
         val gamesB = model.getGamesB()
-        //SET
+        if (gamesA>= 6 && gamesA - gamesB >= 2) {
+            writeSet()
+            model.increaseScoreA()
+        }
+        else if (gamesB>= 6 && gamesB - gamesA >= 2) {
+            writeSet()
+            model.increaseScoreB()
+        }
+    }
+
+    private fun addGame(player:Int){
         if (player == 1) {
-            if (gamesA>= 6 && gamesA - gamesB >= 2){
-                writeSet()
-            }
-            else{
-                model.increaseGamesA()
-                model.increaseScoreA()
-            }
+            model.increaseGamesA()
         }
         else{
-            if(gamesB>= 6 && gamesB - gamesA >= 2) {
-            }
-            else{
-                model.increaseGamesB()
-                model.increaseScoreB()
-            }
+            model.increaseGamesB()
         }
+        model.resetPoints()
+        checkIfSetWon()
     }
 
     private fun writeSet(){
         val indexOfSetToModify = model.getActiveSet() -1
         if (indexOfSetToModify in 0..<model.getNumSets()){
             model.setSets(indexOfSetToModify)
+            Log.d("WRITE_SET", "Writing set $indexOfSetToModify: ${model.getGamesA()}-${model.getGamesB()}")
             view.setSets(model.getGamesA(), model.getGamesB(), indexOfSetToModify)
-            model.increaseActiveSet()
             model.resetGames()
+            model.increaseActiveSet()
         }
     }
 
@@ -105,15 +119,15 @@ class TennisScoreController(private val view: TennisScoreActivity) {
         } else if (b == TennisScoreModel.Points.FORTY) {
             if (a == TennisScoreModel.Points.FORTY) {
                 model.addPointB()
-            } else {
+            }
+            else if (a == TennisScoreModel.Points.ADVANTAGE){
+                model.setDeuce()
+            }
+            else {
                 addGame(2)
             }
         } else {
-            if (b == TennisScoreModel.Points.THIRTY && a == TennisScoreModel.Points.ADVANTAGE)
-                model.setDeuce()
-            else {
-                model.addPointB()
-            }
+            model.addPointB()
         }
         updateView()
         checkWinCondition()
@@ -121,13 +135,13 @@ class TennisScoreController(private val view: TennisScoreActivity) {
 
     fun radBut3Selected(){
         view.hideExtraSets()
-        model.resetAll()
+        resetAll()
         updateView()
     }
 
     fun radBut5Selected(){
         view.showExtraSets()
-        model.resetAll()
+        resetAll()
         updateView()
     }
 }

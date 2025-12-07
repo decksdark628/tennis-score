@@ -85,25 +85,38 @@ class TennisScoreActivity : AppCompatActivity(), ITennisScoreView {
         scoreB.text = nB.toString()
     }
 
+    override fun resetSets(){
+        setsA1.text = "_"
+        setsA2.text = "_"
+        setsB1.text = "_"
+        setsB2.text = "_"
+        setsA3.text = "_"
+        setsA4.text = "_"
+        setsB3.text = "_"
+        setsB4.text = "_"
+        setsB5.text = "_"
+        setsA1.text = "_"
+    }
+
     override fun setSets(nA: Int, nB: Int, ind:Int) {
         when (ind) {
-            1 -> {
+            0 -> {
                 setsA1.text = nA.toString()
                 setsB1.text = nB.toString()
             }
-            2 -> {
+            1 -> {
                 setsA2.text = nA.toString()
                 setsB2.text = nB.toString()
             }
-            3 -> {
+            2 -> {
                 setsA3.text = nA.toString()
                 setsB3.text = nB.toString()
             }
-            4 -> {
+            3 -> {
                 setsA4.text = nA.toString()
                 setsB4.text = nB.toString()
             }
-            5 -> {
+            4 -> {
                 setsA5.text = nA.toString()
                 setsB5.text = nB.toString()
             }
